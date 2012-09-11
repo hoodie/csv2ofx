@@ -174,7 +174,11 @@ class csv2ofx(wx.App):
           skip_last=mapping['_params']['skip_last']
         except:
           skip_last=0
-        self.grid_table = SimpleCSVGrid(path,delimiter,skip_last)
+        try:
+          skip_first=mapping['_params']['skip_first']
+        except:
+          skip_first=0
+        self.grid_table = SimpleCSVGrid(path,delimiter,skip_last,skip_first)
         self.grid.SetTable(self.grid_table)
 	self.opened_path = path
         
